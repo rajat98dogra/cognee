@@ -23,4 +23,5 @@ def get_observe():
                 return decorator
 
         return no_op_decorator
-    raise InvalidObserverError(monitoring.name)
+    observer_name = getattr(monitoring, "name", repr(monitoring))
+    raise InvalidObserverError(observer_name)
